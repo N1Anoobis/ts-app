@@ -3,7 +3,9 @@
     <base-card>
       <h2>Submitted Experiences</h2>
       <div>
-        <base-button>Load Submitted Experiences</base-button>
+        <base-button @click.native="loadExpieriences"
+          >Load Submitted Experiences</base-button
+        >
       </div>
       <ul>
         <survey-result
@@ -18,12 +20,28 @@
 </template>
 
 <script>
-import SurveyResult from './SurveyResult.vue';
-
+import SurveyResult from "./SurveyResult.vue";
+import axios from "axios";
 export default {
-  props: ['results'],
+  // props: ['results'],
   components: {
     SurveyResult,
+  },
+  data() {
+    return {
+      results: [],
+    };
+  },
+  methods: {
+    loadExpieriences() {
+      axios
+        .get(
+          "https://vue-app-b4ba8-default-rtdb.europe-west1.firebasedatabase.app/.json"
+        )
+        .then((res) => console.log(res.data));
+      const result = [];
+      for(const id in data)
+    },
   },
 };
 </script>
